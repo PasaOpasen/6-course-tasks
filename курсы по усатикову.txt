@@ -1,0 +1,6 @@
+
+Пасько Дмитрий А.
+
+Introduction to Deep Learning & Neural Networks with Keras https://www.coursera.org/learn/introduction-to-deep-learning-with-keras
+
+Convolutional Neural Networks https://www.coursera.org/learn/convolutional-neural-networks?specialization=deep-learning

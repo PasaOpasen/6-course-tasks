@@ -136,7 +136,7 @@
 				<EmbeddedObject>
 					<Id>1288356501078</Id>
 					<Name><![CDATA[ball]]></Name>
-					<X>600</X><Y>550</Y>
+					<X>590</X><Y>560</Y>
 					<Label><X>-12</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -214,7 +214,7 @@
 				<EmbeddedObject>
 					<Id>1604854898826</Id>
 					<Name><![CDATA[ball1]]></Name>
-					<X>410</X><Y>560</Y>
+					<X>400</X><Y>570</Y>
 					<Label><X>-12</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1429,8 +1429,8 @@ t0 = time();]]></Action>
 	<RelativeAccuracy>1.0E-5</RelativeAccuracy>
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
-		<Width>800</Width>
-		<Height>600</Height>
+		<Width>760</Width>
+		<Height>500</Height>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>

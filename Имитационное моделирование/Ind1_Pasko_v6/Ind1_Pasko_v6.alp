@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.0.202011181926" AlpVersion="8.7.0">
 <Model>
 	<Id>1288350399421</Id>
-	<Name><![CDATA[Lab5_Pasko]]></Name>
+	<Name><![CDATA[Ind1_Pasko_v6]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[balls]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -171,6 +171,9 @@
 						<Parameter>
 							<Name><![CDATA[t0]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[xborder]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -243,7 +246,7 @@
 						<Parameter>
 							<Name><![CDATA[x0]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[200]]></Code>
+								<Code><![CDATA[400]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -254,6 +257,12 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[t0]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[xborder]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[500]]></Code>
+							</Value>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -877,6 +886,30 @@
 					<FillColorCode><![CDATA[time()<ball1.t0+0.3? red: lime]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Oval>
+				<Line>
+					<Id>1607173507038</Id>
+					<Name><![CDATA[line]]></Name>
+					<X>250</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>DASHED</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>-500</Dy>
+					<Dz>0</Dz>
+				</Line>
 			</Presentation>
 
 				</Level>
@@ -1193,6 +1226,30 @@
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1607173388243</Id>
+					<Name><![CDATA[xborder]]></Name>
+					<X>230</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[250]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1607173388241</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Dependences>
 				<Link SourceId="1288355443094" TargetId="1288355435547" Polarity="null">
@@ -1351,7 +1408,7 @@ t0 = time();]]></Action>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[x <= r && vx < 0 || x >= 500 - r && vx > 0]]></Condition>
+						<Condition><![CDATA[x <= xborder - 250 + r && vx < 0 || x >= xborder - r && vx > 0]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>

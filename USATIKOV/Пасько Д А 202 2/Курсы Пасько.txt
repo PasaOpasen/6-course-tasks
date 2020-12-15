@@ -1,0 +1,13 @@
+COURSERA
+Пасько Д. А. 202/1 
+
+ЛОГИН: qtckpuhdsa@gmail.com
+ПАРОЛЬ: 220897d220897
+
+СЕРТИФИКАТЫ:
+Introduction to Deep Learning & Neural Networks with Keras: https://www.coursera.org/account/accomplishments/verify/WGM7X5QNW4YF
+Convolutional Neural Networks: https://www.coursera.org/account/accomplishments/verify/BLT9UL5YYXDJ
+
+ОТЧЕТЫ:
+https://www.coursera.org/learn/introduction-to-deep-learning-with-keras/home/welcome
+https://www.coursera.org/learn/convolutional-neural-networks/home/welcome

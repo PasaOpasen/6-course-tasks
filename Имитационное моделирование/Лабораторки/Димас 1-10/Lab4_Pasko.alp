@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.0.202011181926" AlpVersion="8.7.0">
 <Model>
 	<Id>1604842685852</Id>
-	<Name><![CDATA[Lab4_Pasko1]]></Name>
+	<Name><![CDATA[Lab4_Pasko]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[lab4]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>

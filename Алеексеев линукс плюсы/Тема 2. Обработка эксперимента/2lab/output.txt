@@ -1,0 +1,6 @@
+
+
+Correlation coef = -0.0476167
+
+MSE for linear regression = 0.0039283
+MSE for non-linear regression = 0.000670573

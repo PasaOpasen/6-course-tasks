@@ -7,10 +7,11 @@ set output "plot.png"
 
 
 filename = 'plotting_data.txt'
+file2 = 'polynom.txt'
 
-plot filename using 1:2 title "target" with points #, \
-#    filename using 3 title "linear regression" with lines, \
-#    filename using 4 title "non-linear regression" with linespoints
+plot file2 using 1:2 title "Lagrange" with lines , \
+    file2 using 1:3 title "Newton"   # , \
+#    filename using 1:2 title "target" with points 
 
 
 

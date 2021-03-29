@@ -3,19 +3,21 @@
 #include <iostream>
 #include <fstream>
 
+#include "polynom.h"
+
+#define N 20
+
 using namespace std;
 
+int main()
+{
 
+    vector<double> x = {0.68, 0.73, 0.80, 0.88, 0.93, 0.99};
+    vector<double> y = {0.80866, 0.89492, 1.02964, 1.20966, 1.34087, 1.52368};
 
-int main(){
+    vector<double> tg = {0.896, 0.774, 0.955};
 
-
-vector<double> x = {0.68,0.73,0.80,0.88,0.93,0.99};
-vector<double> y = {0.80866,0.89492,1.02964,1.20966,1.34087,1.52368};
-
-vector<double> tg = {0.896, 0.774, 0.955};
-
-int size = x.size();
+    int size = x.size();
 
     ofstream file;
     file.open("plotting_data.txt");
@@ -28,6 +30,33 @@ int size = x.size();
     }
 
     file.close();
+
+
+
+    auto lag = Polynom::Lagrange(x, y);
+    auto newt = Polynom::Newton(x, y);
+
+    double step = (x[x.size()-1] - x[0])/(N-1);
+
+    vector<double> t(N), lg(N), nt(N);
+    for(int i=0;i<N;i++){
+        t[i] = x[0] + i*step;
+
+        lg[i] = lag.Value(t[i]);
+        nt[i] = newt.Value(t[i]);
+    }
+
+    file.open("polynom.txt");
+    file << "x\tlag\tnewt" << endl;
+    for (int i = 0; i < N; i++)
+    {
+        file << t[i] << "\t" << lg[i] << "\t" << nt[i];
+        if (i != N - 1)
+            file << endl;
+    }
+
+    file.close();
+
 
 
     return 0;

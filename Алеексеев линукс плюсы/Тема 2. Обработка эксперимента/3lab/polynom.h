@@ -7,20 +7,25 @@ using namespace std;
 class Polynom
 {
 private:
+
+public:
     vector<double> coef;
     int degree;
-public:
+    
     Polynom(int deg);
     Polynom(vector<double> vec);
+    Polynom(double coef, vector<double> roots);
 
     double Value(double value);
 
-    Polynom Lagrange(vector<double> x, vector<double> y);
-    Polynom Newton(vector<double> x, vector<double> y);
-    Polynom Canon(vector<double> x, vector<double> y);
+    static vector<double> Sum( Polynom& a,  Polynom& b);
 
-    std::function<double(double)> Linear();
-    std::function<double(double)> Spline();
+    static Polynom Lagrange(vector<double> x, vector<double> y);
+    static Polynom Newton(vector<double> x, vector<double> y);
+    static Polynom Canon(vector<double> x, vector<double> y);
+
+    static std::function<double(double)> Linear();
+    static std::function<double(double)> Spline();
 
 };
 

@@ -5,6 +5,10 @@
 #include "polynom.h"
 #include "gauss.h"
 #include "prog.h"
+#include <sstream>
+
+#include <iostream>
+#include "dot.h"
 
 using namespace std;
 
@@ -19,8 +23,7 @@ Polynom::Polynom(int deg)
 {
     this->degree = deg;
 
-    vector<double> coef(deg + 1, 0);
-    this->coef = coef;
+    this->coef = vector<double>(deg + 1, 0);
 }
 
 /// Приведённый одночлен по единственному корню (то есть 1(х-х0))
@@ -42,8 +45,8 @@ Polynom::Polynom(double coef, vector<double> roots)
     int size = roots.size();
 
     this->degree = size;
-    vector<double> c(size + 1);
-    this->coef = c;
+    this->coef = vector<double>(size + 1);
+
     //коэффициенты для приведённого полинома первой степени
     this->coef[0] = -roots[0];
     this->coef[1] = 1;
@@ -103,7 +106,7 @@ Polynom operator+(Polynom a, double number)
 
 Polynom operator*(Polynom a, Polynom b)
 {
-    int degree = (a.degree + b.degree);
+    int degree = a.degree + b.degree;
     vector<double> coef(degree + 1);
     for (int i = 0; i <= degree; i++)
     {
@@ -123,6 +126,12 @@ Polynom operator*(double number, Polynom b)
         t[i] *= number;
     return Polynom(t);
 }
+
+Polynom operator*(Polynom a, double number)
+{
+    return number * a;
+}
+
 Polynom operator/(Polynom a, double number)
 {
     return (1.0 / number) * a;
@@ -145,6 +154,17 @@ double Polynom::Value(double value)
     return sum;
 }
 
+string Polynom::str()
+{
+    std::ostringstream ss;
+    for (int i = this->degree; i > 0; i--)
+    {
+        ss << this->coef[i] << "x^" << i << " + ";
+    }
+    ss << this->coef[0];
+    return ss.str();
+}
+
 Polynom Polynom::Lagrange(vector<double> x, vector<double> y)
 {
     int size = x.size();
@@ -165,7 +185,7 @@ Polynom Polynom::Lagrange(vector<double> x, vector<double> y)
 
         double An = y[k] / c.Value(x[k]); //вычисление старшего коэффициента
 
-        PL = PL + Polynom(An, roots);  //создание полинома Pk                       //прибавление к общему
+        PL = PL + Polynom(An, roots); //создание полинома Pk                       //прибавление к общему
     }
     return PL;
 }
@@ -198,7 +218,7 @@ Polynom Polynom::Newton(vector<double> x, vector<double> y)
         Polynom newpol(W(x, y, 0, i + 1), mas[i]);
 
         pol = pol + newpol; //Просуммировать полиномы
-                       //np[i] = new Polynom(pol);
+                            //np[i] = new Polynom(pol);
     }
 
     return pol;
@@ -241,7 +261,7 @@ std::function<double(double)> Polynom::Linear(vector<double> x, vector<double> y
         if (v <= x[1])
             return arr[0].Value(v);
         if (v >= x[n])
-            return arr[n-1].Value(v);
+            return arr[n - 1].Value(v);
 
         int i1 = 1, i2 = n;
         //реализация бинарного поиска
@@ -271,7 +291,6 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
     double *h = new double[n + 1];
     double *yy = new double[n + 1];
 
-
     for (int i = 1; i <= n; i++)
     {
         h[i] = x[i] - x[i - 1]; //Заполнение массива длин отрезков
@@ -299,18 +318,22 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
 
     auto xx = Prog(A, b);
 
+    cout << "MSE for spline:" << get_mse(A, xx, b) << endl;
+
+
     //создание и заполнение массива полиномов
     Polynom *mas = new Polynom[n + 1];
     for (int i = 1; i <= n; i++)
     {
         Polynom p1, p2, p3, p4;
-        
+
         p1 = Polynom(1, {x[i], x[i]}) * (2.0 * Polynom(x[i - 1]) + h[i]) / pow(h[i], 3) * y[i - 1];
         p2 = Polynom(1, {x[i - 1], x[i - 1]}) * (-2.0 * Polynom(x[i]) + h[i]) / pow(h[i], 3) * y[i];
         p3 = Polynom(1, {x[i], x[i]}) * Polynom(x[i - 1]) / pow(h[i], 2) * xx[i - 1];
         p4 = Polynom(1, {x[i - 1], x[i - 1]}) * Polynom(x[i]) / pow(h[i], 2) * xx[i];
 
         mas[i] = p1 + p2 + p3 + p4;
+        cout << (p1).str() << endl;
     }
     //mas[0] = mas[1];mas[n + 1] = mas[n];
 

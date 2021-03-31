@@ -4,12 +4,13 @@ export LD_LIBRARY_PATH=.
 
 gauss_path=../../Theme1/1lab
 
-all: exe clear run
+all: exe clear run plot
 
 copylibs:
 	echo "copy Gauss method library"
 	cp ${gauss_path}/gauss.h ./gauss.h
 	cp ${gauss_path}/prog.h ./prog.h
+	cp ${gauss_path}/dot.h ./dot.h
 	cp ${gauss_path}/libd1lab.so ./libd1lab.so
 	cp ${gauss_path}/libd1lab.so.1 ./libd1lab.so.1	
 

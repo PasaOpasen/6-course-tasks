@@ -19,12 +19,14 @@ public:
     Polynom(double coef, vector<double> roots);
 
     double Value(double value);
+    string str();
 
     friend Polynom operator+( Polynom a,  Polynom b);
     Polynom operator+=(Polynom a);
     friend Polynom operator+(Polynom a, double number);
     friend Polynom operator*( Polynom a,  Polynom b);
     friend Polynom operator*( double number,  Polynom b);
+    friend Polynom operator*( Polynom a, double number);
     friend Polynom operator/(Polynom a, double number);
 
     static Polynom Lagrange(vector<double> x, vector<double> y);

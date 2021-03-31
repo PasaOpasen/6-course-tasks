@@ -1,0 +1,24 @@
+---> Type: ijk
+size = 500  time = 1.77386
+size = 1000  time = 14.2809
+size = 2000  time = 140.959
+---> Type: ikj
+size = 500  time = 1.21096
+size = 1000  time = 9.64517
+size = 2000  time = 76.1697
+---> Type: jik
+size = 500  time = 1.71335
+size = 1000  time = 14.4766
+size = 2000  time = 142.799
+---> Type: jki
+size = 500  time = 2.13512
+size = 1000  time = 29.7971
+size = 2000  time = 234.835
+---> Type: kij
+size = 500  time = 1.21232
+size = 1000  time = 10.7762
+size = 2000  time = 82.9618
+---> Type: kji
+size = 500  time = 2.16615
+size = 1000  time = 32.704
+size = 2000  time = 228.401

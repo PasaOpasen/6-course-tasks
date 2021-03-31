@@ -15,72 +15,47 @@ double rd()
     return rand() % 100;
 }
 
-void init_matrixes(int a_rows, int b_cols, int vec_len, double **&A, double **&B, double **&C)
+void init_matrixes(int a_rows, int b_cols, int vec_len, double *&A, double *&B, double *&C)
 {
 
-    A = new double *[a_rows];
-    B = new double *[vec_len];
-    C = new double *[a_rows];
-
-    for (int i = 0; i < a_rows; i++)
-    {
-        A[i] = new double[vec_len];
-        C[i] = new double[b_cols];
-    }
-    for (int i = 0; i < vec_len; i++)
-        B[i] = new double[b_cols];
-
-    for (int i = 0; i < a_rows; i++)
-        for (int j = 0; j < b_cols; j++)
-            for (int k = 0; k < vec_len; k++)
-            {
-                A[i][k] = rd();
-                B[k][j] = rd();
-                C[i][j] = rd();
-            }
+    A = new double [a_rows*vec_len];
+    B = new double [vec_len*b_cols];
+    C = new double [a_rows*b_cols];
 }
 
-void delete_matrixes(int a_rows, int b_cols, int vec_len, double **&A, double **&B, double **&C)
+void delete_matrixes(int a_rows, int b_cols, int vec_len, double *&A, double *&B, double *&C)
 {
-
-    for (int i = 0; i < a_rows; i++)
-    {
-        delete[] A[i];
-        delete[] C[i];
-    }
-    for (int i = 0; i < vec_len; i++)
-        delete[] B[i];
 
     delete A, B, C;
 }
 
-void work(int type, int a_rows, int b_cols, int vec_len, double **&A, double **&B, double **&C)
+void work(int type, int a_rows, int b_cols, int vec_len, double *&A, double *&B, double *&C)
 {
 
     switch (type)
     {
     case 0:
-        ijk(A, B, a_rows, b_cols, vec_len, C);
+        ijk2(A, B, a_rows, b_cols, vec_len, C);
         break;
 
     case 1:
-        ikj(A, B, a_rows, b_cols, vec_len, C);
+        ikj2(A, B, a_rows, b_cols, vec_len, C);
         break;
 
     case 2:
-        jik(A, B, a_rows, b_cols, vec_len, C);
+        jik2(A, B, a_rows, b_cols, vec_len, C);
         break;
 
     case 3:
-        jki(A, B, a_rows, b_cols, vec_len, C);
+        jki2(A, B, a_rows, b_cols, vec_len, C);
         break;
 
     case 4:
-        kij(A, B, a_rows, b_cols, vec_len, C);
+        kij2(A, B, a_rows, b_cols, vec_len, C);
         break;
 
     case 5:
-        kji(A, B, a_rows, b_cols, vec_len, C);
+        kji2(A, B, a_rows, b_cols, vec_len, C);
         break;
 
     default:
@@ -111,7 +86,7 @@ int main()
 
             for (int i = 0; i < SIMULATIONS; i++)
             {
-                double **A, **B, **C;
+                double *A, *B, *C;
                 init_matrixes(a_rows, b_cols, vec_len, A, B, C);
                 t1 = clock();
 

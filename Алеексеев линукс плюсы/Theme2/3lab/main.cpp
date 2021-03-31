@@ -35,22 +35,24 @@ int main()
 
     auto lag = Polynom::Lagrange(x, y);
     auto newt = Polynom::Newton(x, y);
+    auto canon = Polynom::Canon(x, y);
 
     double step = (x[x.size()-1] - x[0])/(N-1);
 
-    vector<double> t(N), lg(N), nt(N);
+    vector<double> t(N), lg(N), nt(N), cn(N);
     for(int i=0;i<N;i++){
         t[i] = x[0] + i*step;
 
         lg[i] = lag.Value(t[i]);
         nt[i] = newt.Value(t[i]);
+        cn[i] = canon.Value(t[i]);
     }
 
     file.open("polynom.txt");
-    file << "x\tlag\tnewt" << endl;
+    file << "x\tlag\tnewt\tcanon" << endl;
     for (int i = 0; i < N; i++)
     {
-        file << t[i] << "\t" << lg[i] << "\t" << nt[i];
+        file << t[i] << "\t" << lg[i] << "\t" << nt[i] << "\t" << cn[i];
         if (i != N - 1)
             file << endl;
     }

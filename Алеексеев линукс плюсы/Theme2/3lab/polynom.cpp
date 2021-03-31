@@ -63,7 +63,6 @@ Polynom::Polynom(double coef, vector<double> roots)
         this->coef[i] *= coef;
 }
 
-
 // operators
 
 //меня с этих плюсов очень дико бомбило
@@ -72,7 +71,7 @@ Polynom::Polynom(double coef, vector<double> roots)
 // почему именно эту ссылку нельзя сохранять -- не знаю
 // попробовал вставлять const и т п, но ругается уже на static
 // operator тоже не использовал, потому что ему опять что-то не нравится
-Polynom operator+(Polynom &a, Polynom &b)
+Polynom operator+(Polynom a, Polynom b)
 {
     int degree = max(a.degree, b.degree);
 
@@ -90,19 +89,19 @@ Polynom operator+(Polynom &a, Polynom &b)
 
     return Polynom(coef);
 }
-Polynom Polynom::operator+=(Polynom &a)
+Polynom Polynom::operator+=(Polynom a)
 {
     return *this + a;
 }
 
-Polynom operator+(Polynom &a, double number)
+Polynom operator+(Polynom a, double number)
 {
     auto c = a.coef;
     c[0] += number;
     return Polynom(c);
 }
 
-Polynom operator*(Polynom &a, Polynom &b)
+Polynom operator*(Polynom a, Polynom b)
 {
     int degree = (a.degree + b.degree);
     vector<double> coef(degree + 1);
@@ -117,13 +116,19 @@ Polynom operator*(Polynom &a, Polynom &b)
     return Polynom(coef);
 }
 
-Polynom operator*(double number, Polynom &b)
+Polynom operator*(double number, Polynom b)
 {
     auto t = b.coef;
     for (int i = 0; i < t.size(); i++)
         t[i] *= number;
     return Polynom(t);
 }
+Polynom operator/(Polynom a, double number)
+{
+    return (1.0 / number) * a;
+}
+
+// methods
 
 double Polynom::Value(double value)
 {
@@ -159,8 +164,8 @@ Polynom Polynom::Lagrange(vector<double> x, vector<double> y)
         Polynom c(1, roots); //приведённый полином
 
         double An = y[k] / c.Value(x[k]); //вычисление старшего коэффициента
-        Polynom Pk(An, roots);            //создание полинома Pk
-        PL += Pk;                         //прибавление к общему
+
+        PL = PL + Polynom(An, roots);  //создание полинома Pk                       //прибавление к общему
     }
     return PL;
 }
@@ -192,7 +197,7 @@ Polynom Polynom::Newton(vector<double> x, vector<double> y)
     {
         Polynom newpol(W(x, y, 0, i + 1), mas[i]);
 
-        pol += newpol; //Просуммировать полиномы
+        pol = pol + newpol; //Просуммировать полиномы
                        //np[i] = new Polynom(pol);
     }
 
@@ -221,8 +226,38 @@ Polynom Polynom::Canon(vector<double> x, vector<double> y)
     return pol;
 }
 
-std::function<double(double)> Polynom::Linear()
+std::function<double(double)> Polynom::Linear(vector<double> x, vector<double> y)
 {
+    int size = x.size();
+
+    Polynom *arr = new Polynom[size - 1];
+    for (int i = 0; i < size - 1; i++)
+        arr[i] = Polynom::Lagrange({x[i], x[i + 1]}, {y[i], y[i + 1]});
+
+    //создание общей функции и вывод
+    auto f = [x, size, arr](double v) {
+        int n = size - 1; // polynom count
+
+        if (v <= x[1])
+            return arr[0].Value(v);
+        if (v >= x[n])
+            return arr[n-1].Value(v);
+
+        int i1 = 1, i2 = n;
+        //реализация бинарного поиска
+        while (i2 - i1 != 1)
+        {
+            int tmp = (i1 + i2) / 2;
+            if (v > x[tmp])
+                i1 = tmp;
+            else
+                i2 = tmp;
+        }
+
+        return arr[i1].Value(v);
+    };
+
+    return f;
 }
 
 std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y)
@@ -236,13 +271,10 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
     double *h = new double[n + 1];
     double *yy = new double[n + 1];
 
-    auto hmax = x[1] - x[0];
 
     for (int i = 1; i <= n; i++)
     {
         h[i] = x[i] - x[i - 1]; //Заполнение массива длин отрезков
-        if (h[i] > hmax)
-            hmax = h[i];
         yy[i] = y[i] - y[i - 1];
     }
 
@@ -253,19 +285,17 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
 
     A[0][0] = -4.0 / h[1];
     A[0][1] = -2.0 / h[1];
-    b[0] = -6.0 * y[1] / (h[1] * h[1]) + a_;
+    b[0] = -6.0 * yy[1] / (h[1] * h[1]) + a_;
     A[n][n - 1] = 2.0 / h[n];
     A[n][n] = 4.0 / h[n];
-    b[n] = 6.0 * y[n] / (h[n] * h[n]) + b_;
+    b[n] = 6.0 * yy[n] / (h[n] * h[n]) + b_;
     for (int i = 1; i <= n - 1; i++)
     {
         A[i][i - 1] = 1.0 / h[i];
         A[i][i] = 2 * (1.0 / h[i] + 1.0 / h[i + 1]);
         A[i][i + 1] = 1.0 / h[i + 1];
-        b[i] = 3 * (y[i] / h[i] / h[i] + y[i + 1] / h[i + 1] / h[i + 1]);
+        b[i] = 3 * (yy[i] / h[i] / h[i] + yy[i + 1] / h[i + 1] / h[i + 1]);
     }
-    //S.b[0] = a;
-    //S.b[n] = b;
 
     auto xx = Prog(A, b);
 
@@ -274,10 +304,12 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
     for (int i = 1; i <= n; i++)
     {
         Polynom p1, p2, p3, p4;
+        
         p1 = Polynom(1, {x[i], x[i]}) * (2.0 * Polynom(x[i - 1]) + h[i]) / pow(h[i], 3) * y[i - 1];
         p2 = Polynom(1, {x[i - 1], x[i - 1]}) * (-2.0 * Polynom(x[i]) + h[i]) / pow(h[i], 3) * y[i];
         p3 = Polynom(1, {x[i], x[i]}) * Polynom(x[i - 1]) / pow(h[i], 2) * xx[i - 1];
         p4 = Polynom(1, {x[i - 1], x[i - 1]}) * Polynom(x[i]) / pow(h[i], 2) * xx[i];
+
         mas[i] = p1 + p2 + p3 + p4;
     }
     //mas[0] = mas[1];mas[n + 1] = mas[n];
@@ -288,8 +320,7 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
             return (is0outcut) ? 0 : mas[1].Value(v);
         if (v >= x[n])
             return (is0outcut) ? 0 : mas[n].Value(v);
-        int i = 1;
-        //while (x > x[i]) i++;
+
         int i1 = 1, i2 = n;
         //реализация бинарного поиска
         while (i2 - i1 != 1)
@@ -300,7 +331,9 @@ std::function<double(double)> Polynom::Spline(vector<double> x, vector<double> y
             else
                 i2 = tmp;
         }
-        i = i2;
-        return mas[i].Value(v);
+
+        return mas[i2].Value(v);
     };
+
+    return f;
 }

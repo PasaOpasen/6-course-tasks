@@ -22,13 +22,13 @@ complib: polynom.o
 	ldconfig -n .
 
 exe: main.cpp complib copylibs
-	g++ ./main.cpp -L. -ld3lab -ld1lab -lm -o dynamic_3lab
+	g++ ./main.cpp -L.  -ld3lab -ld1lab -o dynamic_3lab
 
 plot: run
 	gnuplot --persist  plot.sh
 
 run: exe
-	./dynamic_3lab >output.txt & 
+	./dynamic_3lab >output.txt 2>error.txt &
 
 clear:
 	-rm *.o

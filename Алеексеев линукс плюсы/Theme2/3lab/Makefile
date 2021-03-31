@@ -5,7 +5,10 @@ export LD_LIBRARY_PATH=.
 
 all: exe clear run
 
+copylibs:
+	cp cd ../../
 
+gauss
 
 polynom.o: polynom.cpp polynom.h
 	g++ -c -fpic polynom.cpp

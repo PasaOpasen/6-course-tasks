@@ -147,3 +147,16 @@ Polynom Polynom::Newton(vector<double> x, vector<double> y)
 
     return pol;
 }
+
+
+
+
+
+
+
+std::function<double(double)> Polynom::Linear(){
+
+}
+std::function<double(double)> Polynom::Spline(){
+    
+}

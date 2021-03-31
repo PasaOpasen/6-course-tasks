@@ -5,7 +5,7 @@
 
 #include "polynom.h"
 
-#define N 20
+#define N 70
 
 using namespace std;
 
@@ -13,7 +13,7 @@ int main()
 {
 
     vector<double> x = {0.68, 0.73, 0.80, 0.88, 0.93, 0.99};
-    vector<double> y = {0.80866, 0.89492, 2.02964, 1.20966, 1.34087, 1.52368};
+    vector<double> y = {0.80866, 0.89492, 1.02964, 1.20966, 1.34087, 1.52368};
 
     vector<double> tg = {0.896, 0.774, 0.955};
 

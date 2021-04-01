@@ -1,0 +1,4 @@
+number from 1 is 13
+number from 2 is 13
+number from 0 is 13
+Result is 2197

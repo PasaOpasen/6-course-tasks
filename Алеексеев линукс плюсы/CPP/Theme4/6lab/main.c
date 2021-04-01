@@ -61,7 +61,7 @@ double g(double x)
 
 int main(int argc, char *argv[])
 {
-
+    int item;
     double f_, g_;
 
     MPI_Status st;
@@ -70,11 +70,14 @@ int main(int argc, char *argv[])
 
     MPIinteg(f, 0, 1, COUNT, st, &f_);
     MPIinteg(g, 0, 2, COUNT,  st, &g_);
+    MPI_Comm_rank(MPI_COMM_WORLD, &item);
 
+if(item == 0)
+printf("f - g = %f - %g = %f\n",f_, g_ , f_ - g_);
     
     MPI_Finalize();
 
-    printf("f - g = %f - %g = %f\n",f_, g_ , f_ - g_);
+    
 
 
 

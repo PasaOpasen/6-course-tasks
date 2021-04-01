@@ -6,30 +6,29 @@
 
 using namespace std;
 
-vector<vector<double>> LinesSwap(vector<vector<double>> A, int n1, int n2){
-    
+vector<vector<double>> LinesSwap(vector<vector<double>> A, int n1, int n2)
+{
+
     vector<double> t = A[n1];
     A[n1] = A[n2];
     A[n2] = t;
     return A;
 }
 
-vector<vector<double>> LinesDiff(vector<vector<double>> A, int n1, int n2, double coef){
-    
-    for(int i=0; i<A[0].size();i++)
+vector<vector<double>> LinesDiff(vector<vector<double>> A, int n1, int n2, double coef)
+{
+
+    for (int i = 0; i < A[0].size(); i++)
         A[n1][i] -= coef * A[n2][i];
 
     return A;
 }
 
-
-
-
-
 vector<double> Gauss(vector<vector<double>> matrix, vector<double> vector)
 {
 
     int size = vector.size();
+    std::vector<int> pairs;
 
     std::vector<std::vector<double>> S(size, std::vector<double>(size + 1));
     for (int j = 0; j < size; j++)
@@ -38,8 +37,6 @@ vector<double> Gauss(vector<vector<double>> matrix, vector<double> vector)
             S[i][j] = matrix[i][j];
         S[j][size] = vector[j];
     }
-
-    //S.LinesDiff(2, 1, 2); S.PrintMatrix();
 
     for (int j = 0; j < size; j++)
     {
@@ -50,6 +47,9 @@ vector<double> Gauss(vector<vector<double>> matrix, vector<double> vector)
             while (S[h][j] == 0)
                 h++;
             S = LinesSwap(S, k, h);
+
+            pairs.push_back(k);
+            pairs.push_back(h);
         }
 
         while (S[k][j] == 0 && k < size - 1)
@@ -61,12 +61,12 @@ vector<double> Gauss(vector<vector<double>> matrix, vector<double> vector)
                 S = LinesDiff(S, l, k, S[l][j] / S[k][j]);
                 l++;
             } //отнимать от строк снизу
-              //S.PrintMatrix();Console.WriteLine();
+
         l = k - 1;
         if (k != 0)
             while (l != -1)
             {
-                S = LinesDiff(S, l, k, S[l][j] /S[k][j]);
+                S = LinesDiff(S, l, k, S[l][j] / S[k][j]);
                 l--;
             } //отнимать от строк сверху
     }
@@ -81,11 +81,19 @@ vector<double> Gauss(vector<vector<double>> matrix, vector<double> vector)
         cout << endl;
     }
 
-
     std::vector<double> x(size);
     for (int i = 0; i < size; i++)
         x[i] = S[i][size] / S[i][i];
 
+    // replace back
+    for (int i = 0; i < pairs.size(); i += 2)
+    {
+        int k = pairs[i], h = pairs[i + 1];
+
+        double t = x[h];
+        x[h] = x[k];
+        x[k] = t;
+    }
 
     return x;
 

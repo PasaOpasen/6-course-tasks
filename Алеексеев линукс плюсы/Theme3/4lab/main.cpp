@@ -36,7 +36,7 @@ void init_matrixes(int a_rows, int b_cols, int vec_len, double **&A, double **&B
             {
                 A[i][k] = rd();
                 B[k][j] = rd();
-                C[i][j] = rd();
+                C[i][j] = 0;
             }
 }
 

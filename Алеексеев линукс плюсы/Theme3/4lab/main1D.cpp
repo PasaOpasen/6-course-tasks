@@ -21,6 +21,13 @@ void init_matrixes(int a_rows, int b_cols, int vec_len, double *&A, double *&B, 
     A = new double [a_rows*vec_len];
     B = new double [vec_len*b_cols];
     C = new double [a_rows*b_cols];
+
+    for(int i=0;i<a_rows*vec_len;i++)
+    A[i] = rd();
+    for(int i=0;i<vec_len*b_cols;i++)
+    B[i] = rd();
+        for(int i=0;i<a_rows*b_cols;i++)
+    C[i] = 0;
 }
 
 void delete_matrixes(int a_rows, int b_cols, int vec_len, double *&A, double *&B, double *&C)

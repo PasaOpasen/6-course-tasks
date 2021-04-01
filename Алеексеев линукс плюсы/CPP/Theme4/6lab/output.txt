@@ -1,0 +1,11 @@
+number from 0 is 0.133303
+number from 1 is 0.088873
+number from 1 is 0.133109
+number from 2 is 0.063482
+number from 2 is 0.098682
+Result is 0.285658 from thread 0
+number from 0 is 0.160867
+Result is 0.392657 from thread 0
+f - g = 0.000000 - 4.67421e-310 = 0.000000
+f - g = 0.000000 - 4.64052e-310 = 0.000000
+f - g = 0.285658 - 0.392657 = -0.106999

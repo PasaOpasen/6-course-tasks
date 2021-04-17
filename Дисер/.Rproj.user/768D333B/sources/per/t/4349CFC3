@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584806680204.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "93|10|196|3|\n197|46|574|3|\n575|20|897|3|\n577|6|691|0|\n705|31|715|0|\n716|26|737|0|\n738|52|761|0|\n762|27|791|3|\n792|40|897|3|\n794|14|841|0|\n911|41|917|0|\n922|15|975|0|\n923|59|946|0|\n981|32|984|3|\n985|54|994|0|\n995|18|1053|0|\n997|6|1023|0|\n1054|29|1087|0|\n1088|22|1123|0|\n1126|17|1137|0|\n",
+    "hash" : "3305649661",
+    "id" : "4349CFC3",
+    "lastKnownWriteTime" : 1584891215,
+    "last_content_update" : 1584891215265,
+    "path" : "C:/Users/крендель/Desktop/LittleHelps/Estimating RM/Regression-model-for-estimating-RM.Rmd",
+    "project_path" : "Regression-model-for-estimating-RM.Rmd",
+    "properties" : {
+        "cursorPosition" : "978,100",
+        "scrollLine" : "905"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

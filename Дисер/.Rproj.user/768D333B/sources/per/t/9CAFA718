@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581109624570.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "46|23|55|0|\n57|29|60|0|\n61|29|64|0|\n233|34|391|0|\n399|28|422|0|\n424|51|433|0|\n436|20|446|0|\n455|24|495|0|\n497|22|503|0|\n702|23|704|4|\n791|7|847|63|\n848|108|919|0|\n920|22|966|0|\n",
+    "hash" : "2970975612",
+    "id" : "9CAFA718",
+    "lastKnownWriteTime" : 1584884452,
+    "last_content_update" : 1584884452207,
+    "path" : "C:/Users/крендель/Desktop/LittleHelps/Estimating RM/code.R",
+    "project_path" : "code.R",
+    "properties" : {
+        "cursorPosition" : "1009,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

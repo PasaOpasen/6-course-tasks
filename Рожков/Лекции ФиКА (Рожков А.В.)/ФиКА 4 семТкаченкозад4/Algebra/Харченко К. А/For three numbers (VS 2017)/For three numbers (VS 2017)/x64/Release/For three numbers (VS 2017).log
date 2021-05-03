@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  For three numbers (VS 2017).cpp
+c:\users\dimen\documents\visual studio 2017\project\algebra\kirill\for three numbers (vs 2017)\for three numbers (vs 2017)\for three numbers (vs 2017).cpp(39): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода
+  All 138 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  For three numbers (VS 2017).vcxproj -> C:\Users\dimen\Documents\Visual Studio 2017\Project\Algebra\Kirill\For three numbers (VS 2017)\x64\Release\For three numbers (VS 2017).exe

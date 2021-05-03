@@ -1,0 +1,4 @@
+﻿  stdafx.cpp
+  For two numbers (VS 2017).cpp
+c:\users\dimen\documents\visual studio 2017\project\algebra\kirill\for two numbers (vs 2017)\for two numbers (vs 2017)\for two numbers (vs 2017).cpp(39): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  For two numbers (VS 2017).vcxproj -> C:\Users\dimen\Documents\Visual Studio 2017\Project\Algebra\Kirill\For two numbers (VS 2017)\Debug\For two numbers (VS 2017).exe

@@ -1,0 +1,8 @@
+﻿  For two numbers (VS 2017).cpp
+c:\users\dimen\documents\visual studio 2017\project\algebra\me\for two numbers (vs 2017)\for two numbers (vs 2017)\for two numbers (vs 2017).cpp(39): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода
+  1 of 138 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  For two numbers (VS 2017).vcxproj -> C:\Users\dimen\Documents\Visual Studio 2017\Project\Algebra\Me\For two numbers (VS 2017)\x64\Release\For two numbers (VS 2017).exe

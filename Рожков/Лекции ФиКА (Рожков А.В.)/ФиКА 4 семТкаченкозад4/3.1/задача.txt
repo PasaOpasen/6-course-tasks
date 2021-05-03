@@ -1,0 +1,37 @@
+//ѕрограмма, дл€ подсчета всех смешанных значений между простыми числами с условием [0; 8]
+prime:=function(n,m)
+local i,s,p,L;
+s := 0;
+p := 0;
+L := [];
+  for i in [n..m] do
+    if (IsProbablyPrimeInt(i) = true) and (IsProbablyPrimeInt(i + 8) = true) then
+      if (IsProbablyPrimeInt(i + 2) = false) and (IsProbablyPrimeInt(i + 4) = false) and (IsProbablyPrimeInt(i + 6) = false) and (IsProbablyPrimeInt(i + 10) = false) then
+        s := s + 4 + 5;
+        p := p + 1;
+      fi;
+    fi;
+  od;
+L[1] := s;
+L[2] := p;
+return(L);
+end;
+prime(1,500000000);
+
+//ѕрограмма, дл€ подсчета всех смешанных значений между простыми числами с условием [0; 10; 12]
+prime:=function(n,m)
+local i,s,L;
+s := 0;
+L := [];
+  for i in [n..m] do
+    if (IsProbablyPrimeInt(i) = true) and (IsProbablyPrimeInt(i + 10) = true) and (IsProbablyPrimeInt(i + 12) = true) then
+      if (IsProbablyPrimeInt(i + 2) = false) and (IsProbablyPrimeInt(i + 4) = false) and (IsProbablyPrimeInt(i + 6) = false) and (IsProbablyPrimeInt(i + 8) = false) then
+      s := s + 1;
+      fi;
+    fi;
+  od;
+L[1] := s;
+L[2] := s * 9;
+return(L);
+end;
+prime(1,500000000);

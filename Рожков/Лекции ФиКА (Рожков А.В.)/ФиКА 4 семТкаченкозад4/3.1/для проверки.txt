@@ -1,0 +1,37 @@
+prime:=function(n,m)
+local i,s,p,L;
+s := 0;
+p := [];
+L := [];
+  for i in [n..m] do
+    if (IsProbablyPrimeInt(i) = true) and (IsProbablyPrimeInt(i + 8) = true) then
+      if (IsProbablyPrimeInt(i + 2) = false) and (IsProbablyPrimeInt(i + 4) = false) and (IsProbablyPrimeInt(i + 6) = false) and (IsProbablyPrimeInt(i + 10) = false) then
+        s := s + 1;
+        Add(p,i);
+      fi;
+    fi;
+  od;
+L[1] := p;
+L[2] := s;
+return(L);
+end;
+prime(1,1000);
+
+prime:=function(n,m)
+local i,s,L,p;
+s := 0;
+p := [];
+L := [];
+  for i in [n..m] do
+    if (IsProbablyPrimeInt(i) = true) and (IsProbablyPrimeInt(i + 10) = true) and (IsProbablyPrimeInt(i + 12) = true) then
+      if (IsProbablyPrimeInt(i + 2) = false) and (IsProbablyPrimeInt(i + 4) = false) and (IsProbablyPrimeInt(i + 6) = false) and (IsProbablyPrimeInt(i + 8) = false) then
+        s := s + 1;
+        Add(p,i);
+      fi;
+    fi;
+  od;
+L[1] := p;
+L[2] := s;
+return(L);
+end;
+prime(1,1000);

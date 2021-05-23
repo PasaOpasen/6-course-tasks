@@ -3,13 +3,13 @@ title: "Регрессионные модели для определения п
 author: '[Дмитрий Пасько](https://github.com/PasaOpasen)'
 date: "`r format(Sys.time(), '%d.%m.%Y')`"
 output:
-  word_document:
-    toc: yes
   html_document:
     code_folding: hide
     df_print: paged
     number_sections: yes
     theme: united
+    toc: yes
+  word_document:
     toc: yes
 ---
 

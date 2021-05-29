@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585080124331.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "15|56|52|0|\n",
+    "hash" : "3209711865",
+    "id" : "37D66057",
+    "lastKnownWriteTime" : 1585054608,
+    "last_content_update" : 1585080167776,
+    "path" : "C:/Users/qtckp/OneDrive/Рабочий стол/6-course-tasks/Дисер/use_cycles.R",
+    "project_path" : "use_cycles.R",
+    "properties" : {
+        "cursorPosition" : "12,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

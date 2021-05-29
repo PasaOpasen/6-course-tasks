@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585060346833.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1215977448",
+    "id" : "EED1D568",
+    "lastKnownWriteTime" : 1621940770,
+    "last_content_update" : 1621940770,
+    "path" : "C:/Users/qtckp/OneDrive/Рабочий стол/6-course-tasks/Дисер/Regression-model-for-estimating-RM.Rmd",
+    "project_path" : "Regression-model-for-estimating-RM.Rmd",
+    "properties" : {
+        "cursorPosition" : "581,0",
+        "ignored_words" : "cccc,dotdash,qtckpuhdsa,https,github,PasaOpasen,Sys,rus,tsv,fddnfffnnnff,BodyType,getRversion,img,src,png,nrow,AgeGroup,IndexGroup,CountGroup,lm,ccccc,ccc,jpg,Endo,NonEndo\n",
+        "scrollLine" : "581"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

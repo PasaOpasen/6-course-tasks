@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/773818/58a9cf72b99742a680dc822f53ecf231
+bundleId: https://api.rpubs.com/api/v1/document/773818/58a9cf72b99742a680dc822f53ecf231
+url: http://rpubs.com/DemetryPascal/773818
+when: 1621951421.23566
